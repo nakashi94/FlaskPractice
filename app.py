@@ -4,9 +4,13 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
+    data = ["One", "Two", "Three"]
+    person = {'name':'Taro', 'mail':'taro@yamada'}
     return render_template('jinja.html', \
         title="Template sample", \
-        message='※メッセージがあります。' )
+        message='This is sample message.', \
+        data=data, \
+        person=person )
 
 # @app.route('/', methods=['POST'])
 # def form():
