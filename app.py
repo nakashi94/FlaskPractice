@@ -4,11 +4,9 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-    flg = False
     return render_template('jinja.html', \
         title="Template sample", \
-        message="This is Jinja template sample.", \
-        flg=flg )
+        message='<a href="/">go to top page</a>' )
 
 # @app.route('/', methods=['POST'])
 # def form():
