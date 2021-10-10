@@ -6,7 +6,7 @@ app = Flask(__name__)
 def index():
     return render_template('jinja.html', \
         title="Template sample", \
-        message='<a href="/">go to top page</a>' )
+        message='※メッセージがあります。' )
 
 # @app.route('/', methods=['POST'])
 # def form():
