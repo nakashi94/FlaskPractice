@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, url_for, redirect
+from flask.views import MethodView
 import random
 
 app = Flask(__name__)
@@ -38,6 +39,29 @@ def sample_processor():
             total += i
         return total
     return dict(total=total)
+
+app.secret_key = b'random string...'
+
+class HelloAPI(MethodView):
+    send = ''
+
+    def get(self):
+        if 'send' in session:
+            msg = 'send:' + session['send']
+            send = session['send']
+        else:
+            msg = '何か書いてください。'
+            send = ''
+        return render_template('next.html', \
+            title='Next page', \
+            message=msg, \
+            send=send )
+
+    def post(self):
+        session['send'] = request.form['send']
+        return redirect('/hello/')
+
+app.add_url_rule('/hello/', view_func=HelloAPI.as_view('hello'))
 
 if __name__ == '__main__':
     app.debug = True
