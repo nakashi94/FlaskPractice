@@ -30,6 +30,15 @@ def sum_filter(data):
 
 app.jinja_env.filters['sum'] = sum_filter
 
+@app.context_processor
+def sample_processor():
+    def total(n):
+        total = 0
+        for i in range(n+1):
+            total += i
+        return total
+    return dict(total=total)
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='localhost')
