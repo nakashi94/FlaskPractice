@@ -8,6 +8,13 @@ def index():
         title="Template sample", \
         message='This is sample page.' )
 
+@app.route('/next', methods=['GET'])
+def next():
+    return render_template('next.html', \
+        title="Next page", \
+        message="※これは、別のサンプルページです。", \
+        data = ['One', 'Two', 'Three'] )
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='localhost')

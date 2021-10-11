@@ -13,6 +13,12 @@ p {
     font-size: 14pt;
 }
 
+pre {
+    background-color: white;
+    font-size: 12pt;
+    padding: 10px;
+}
+
 div.footer {
     text-align: right;
     border-bottom: 1px solid lightskyblue;
